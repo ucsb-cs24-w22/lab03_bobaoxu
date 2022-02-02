@@ -85,6 +85,14 @@ void IntList::insertFirst(int value) {
 //to this list, deleting/replacing any existing nodes
 IntList& IntList::operator=(const IntList& source){
     //IMPLEMENT
+	Node* a = first;
+	while (a){
+		a = a->next;
+		delete first;
+                first = a;
+        }
+        delete a;
+        delete first;   	
 	for (Node* a = source.first; a!= NULL; a=a->next){
 		append(a->info);
 	}
