@@ -70,7 +70,7 @@ int IntList::max() const {
 // 0 if list is empty
 double IntList::average() const {
 	if (count()==0) return 0.0;
-	return (sum()/count());  // REPLACE THIS NON-SOLUTION
+	return sum()/(double)count();  // REPLACE THIS NON-SOLUTION
 }
 
 // inserts value as new node at beginning of list
