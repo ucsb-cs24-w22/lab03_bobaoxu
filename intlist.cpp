@@ -3,7 +3,7 @@
 // YOUR NAME(S), AND DATE
 
 #include "intlist.h"
-
+#include <iomanip>
 #include <iostream>
 using std::cout;
 
@@ -70,6 +70,7 @@ int IntList::max() const {
 // returns average (arithmetic mean) of all values, or
 // 0 if list is empty
 double IntList::average() const {
+	cout<<std::fixed<<std::setprecision(3);
 	if (count()==0) return 0.0;
 	return (sum()/count());  // REPLACE THIS NON-SOLUTION
 }
