@@ -9,46 +9,88 @@ using std::cout;
 
 // copy constructor
 IntList::IntList(const IntList& source) {
-    //IMPLEMENT THIS
+	first = 0;
+	for (Node* a = source.first; a != NULL; a=a->next){
+		append(a->info);
+	}
+	//IMPLEMENT THIS
 }
 
 // destructor deletes all nodes
 IntList::~IntList() {
-    //IMPLEMENT THIS
+	Node* a = first;
+	while (a){
+		a = a->next;
+		delete first;
+		first = a;
+	}
+ 	delete a;
+ 	delete first;   //IMPLEMENT THIS
 }
 
 
 // return sum of values in list
 int IntList::sum() const {
-    return 0; // REPLACE THIS NON-SOLUTION
+	int sum = 0;
+	Node* a = first;
+	while (a){
+		sum += a->info;
+	a=a->next;
+	}
+	return sum; // REPLACE THIS NON-SOLUTION
 }
 
 // returns true if value is in the list; false if not
 bool IntList::contains(int value) const {
-    return false; // REPLACE THIS NON-SOLUTION
+	if (count()==0) return false;
+	bool b = false;
+	if (first->info == value) b = true;
+	else {
+		Node* a = first->next;
+		while(a){
+			if (a->info == value) b = true;
+			a = a-> next;
+		}
+	}
+	return b; // REPLACE THIS NON-SOLUTION
 }
 
 // returns maximum value in list, or 0 if empty list
 int IntList::max() const {
-    return 0; // REPLACE THIS NON-SOLUTION
+	if (count() == 0) return 0;
+	int c = first->info;
+	Node* a = first->next;
+	while (a){
+		if (a->info > c) c = a->info;
+			a = a->next;
+		}
+	return c; // REPLACE THIS NON-SOLUTION
 }
 
 // returns average (arithmetic mean) of all values, or
 // 0 if list is empty
 double IntList::average() const {
-    return 0.0; // REPLACE THIS NON-SOLUTION
+	if (count()==0) return 0.0;
+	return (sum()/count());  // REPLACE THIS NON-SOLUTION
 }
 
 // inserts value as new node at beginning of list
 void IntList::insertFirst(int value) {
-    // IMPLEMENT
+	Node* z = new Node;
+	z->info = value;
+	z->next = first;
+	first = z;// IMPLEMENT
 }
 
 //Assignment operator should copy the list from the source
 //to this list, deleting/replacing any existing nodes
 IntList& IntList::operator=(const IntList& source){
     //IMPLEMENT
-    return *this;
+	for (Node* a = source.first; a!= NULL; a=a->next){
+		append(a->info);
+	}
+	cout << "flag\n";
+	return *this;
 }
 
 
