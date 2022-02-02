@@ -96,7 +96,6 @@ IntList& IntList::operator=(const IntList& source){
 	for (Node* a = source.first; a!= NULL; a=a->next){
 		append(a->info);
 	}
-	cout << "flag\n";
 	return *this;
 }
 
